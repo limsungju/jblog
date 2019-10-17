@@ -49,4 +49,14 @@ public class UserController {
 	public String login() {
 		return "user/login";
 	}
+	
+	// 로그인 인터셉터
+	@RequestMapping(value="/auth", method=RequestMethod.POST)
+	public void auth() {
+	}
+	
+	// 로그아웃 인터셉터
+	@RequestMapping(value="/logout", method=RequestMethod.GET)
+	public void logout() {
+	}
 }

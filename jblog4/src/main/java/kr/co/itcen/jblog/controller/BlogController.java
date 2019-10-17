@@ -98,7 +98,7 @@ public class BlogController {
 	// 블로그 기본 설정 변경
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
 	public String blogUpdate(@PathVariable String id, @RequestParam(value = "title", defaultValue = "") String title,
-			@RequestParam(value = "logo-file") MultipartFile multipartFile, Model model) {
+			@RequestParam("logo-file") MultipartFile multipartFile, Model model) {
 
 		String logoUrl = fileuploadService.restore(multipartFile);
 
