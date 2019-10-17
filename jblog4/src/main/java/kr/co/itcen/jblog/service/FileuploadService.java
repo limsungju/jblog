@@ -16,7 +16,7 @@ public class FileuploadService {
 	@Autowired
 	Environment env;
 	
-	private static final String SAVE_PATH = "d:/uploads";
+	private static final String SAVE_PATH = "/uploads";
 	private static final String URL = "/images";
 
 	public String restore(MultipartFile multipartFile) {

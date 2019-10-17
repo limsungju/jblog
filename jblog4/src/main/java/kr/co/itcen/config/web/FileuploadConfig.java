@@ -18,26 +18,26 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 @EnableWebMvc
 @PropertySource("classpath:kr/co/itcen/jblog/config/web/properties/multipart.properties")
 public class FileuploadConfig extends WebMvcConfigurerAdapter {
-	
-	@Autowired
-	private Environment env;
-	
-	// MultipartResolver
-	@Bean
-	public CommonsMultipartResolver commonsMultipartResolver() {
-		CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
-		multipartResolver.setMaxUploadSize(env.getProperty("multipart.maxUploadSize", Integer.class));
-		multipartResolver.setMaxInMemorySize(env.getProperty("multipart.maxInMemorySize", Integer.class));
-		multipartResolver.setDefaultEncoding(env.getProperty("multipart.defaultEncoding"));
-		
-		return multipartResolver;
-	}
 
-	@Override
-	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-		registry
-			.addResourceHandler(env.getProperty("multipart.resourceMapping") + "/**")
-			.addResourceLocations("file:d:" + env.getProperty("multipart.uploadsLocation"));
-	}
-	
+   @Autowired
+   private Environment env;
+   
+   // MultipartResolver
+   @Bean
+   public CommonsMultipartResolver multipartResolver() {
+      CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
+      multipartResolver.setMaxUploadSize(env.getProperty("maxUploadsSize", Integer.class));
+      multipartResolver.setMaxInMemorySize(env.getProperty("maxInMemorySize", Integer.class));
+      multipartResolver.setDefaultEncoding(env.getProperty("defaultEncoding"));
+      return multipartResolver;
+
+   }
+
+   @Override
+   public void addResourceHandlers(ResourceHandlerRegistry registry) {
+      registry
+      	.addResourceHandler(env.getProperty("resourceMapping") + "/**")
+      	.addResourceLocations("file:d:" + env.getProperty("uploadLocation"));
+   }
+
 }
