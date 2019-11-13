@@ -24,7 +24,6 @@ $(function() {
       if(id == ""){
          return;
       }
-      
       // ajax 통신
       $.ajax({ //전역함수
          url: "/jblog3/api/user/checkid?id=" + id,
